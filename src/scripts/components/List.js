@@ -1,7 +1,6 @@
 import React from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
 
-import { connect } from 'redux/react';
 import { Link } from 'react-router';
 
 import getClassName from '../utils/getClassName';
@@ -12,9 +11,6 @@ require('./List.less');
 
 const bem = getClassName('List');
 
-@connect(state => ({
-  games: state.games
-}))
 export default class List {
   shouldComponentUpdate: shouldPureComponentUpdate
 
