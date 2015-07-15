@@ -5,11 +5,11 @@ export default keyMirror({
   REQUEST_LIST_OK: null,
   REQUEST_LIST_FAIL: null,
 
-  REQUEST_VIEW: null,
-  REQUEST_VIEW_OK: null,
-  REQUEST_VIEW_FAIL: null,
+  REQUEST_GAME: null,
+  REQUEST_GAME_OK: null,
+  REQUEST_GAME_FAIL: null,
 
-  REQUEST_EDIT: null,
-  REQUEST_EDIT_OK: null,
-  REQUEST_EDIT_FAIL: null
+  CREATE_GAME: null,
+  CREATE_GAME_OK: null,
+  CREATE_GAME_FAIL: null
 });

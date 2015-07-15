@@ -1,6 +1,8 @@
 import React from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
+
 import { connect } from 'redux/react';
+import { Link } from 'react-router';
 
 import getClassName from '../utils/getClassName';
 
@@ -22,13 +24,14 @@ export default class List {
     return (
       <div className={bem()}>
         {listViews}
+        <Link to='/create'>Add game</Link>
       </div>
     );
   }
 
   renderListView(game) {
     return (
-      <ListView game={game} />
+      <ListView game={game} key={game.get('id')} />
     );
   }
 }

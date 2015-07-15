@@ -1,8 +1,6 @@
 import React, { PropTypes } from 'react';
 import { RouteHandler } from 'react-router';
 
-import * as GameActions from '../actions/GameActions';
-
 export default class AppHandler {
   static get propTypes() {
     return {
@@ -12,15 +10,25 @@ export default class AppHandler {
     };
   }
 
+  static get contextTypes() {
+    return {
+      router: React.PropTypes.func.isRequired
+    };
+  }
+
   static get childContextTypes() {
     return {
-      redux: React.PropTypes.object.isRequired
+      redux: React.PropTypes.object.isRequired,
+      router: React.PropTypes.func.isRequired,
+      params: React.PropTypes.object
     };
   }
 
   getChildContext() {
     return {
-      redux: this.props.redux
+      redux: this.props.redux,
+      router: this.context.router,
+      params: this.props.params
     };
   }
 

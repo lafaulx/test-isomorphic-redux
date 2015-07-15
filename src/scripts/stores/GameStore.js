@@ -9,6 +9,20 @@ const actionsMap = {
     const { body } = action.result;
 
     return fromJS(body);
+  },
+
+  [ActionTypes.REQUEST_GAME_OK]: (state, action) => {
+    const body = fromJS(action.result.body);
+
+    const index = state.findIndex(game => {
+      return game.get('id') === body.get('id');
+    });
+
+    if (index === -1) {
+      return state.push(body);
+    } else {
+      return state.update(index, () => body);
+    }
   }
 };
 

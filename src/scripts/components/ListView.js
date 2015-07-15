@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
+import { Link } from 'react-router';
 
 import getClassName from '../utils/getClassName';
 
@@ -10,7 +11,7 @@ const bem = getClassName('ListView');
 export default class ListView {
   shouldComponentUpdate: shouldPureComponentUpdate
 
-  static get getPropTypes() {
+  static get propTypes() {
     return {
       game: PropTypes.object.isRequired
     };
@@ -21,7 +22,7 @@ export default class ListView {
 
     return (
       <div className={bem()}>
-        {game.get('name')}
+        <Link to={`/view/${game.get('id')}`}>{game.get('title')}</Link>
       </div>
     );
   }
