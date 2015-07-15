@@ -23,6 +23,7 @@ export default class ListView {
     return (
       <div className={bem()}>
         <Link to={`/view/${game.get('id')}`}>{game.get('title')}</Link>
+        <span>{game.get('platform')}</span>
         <Link to={`/edit/${game.get('id')}`}>edit</Link>
       </div>
     );

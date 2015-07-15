@@ -54,17 +54,26 @@ export default class Edit extends React.Component {
 
     return (
       <div className={bem()}>
-        <Link to='/'>Back</Link>
-        <input type='text' name='title' value={title} placeholder='Title' onChange={this.handleChange} />
+        <h1>{this.props.game ? 'Edit game' : 'Create game'}</h1>
         <div>
-          <label for='platform'>Platform</label>
-          <select value={platform} onChange={this.handleChange}>
+          <label>Title:</label>
+          <input type='text' name='title' value={title} placeholder='Title' onChange={this.handleChange} />
+        </div>
+        <div>
+          <label>Platform:</label>
+          <select name='platform' value={platform} onChange={this.handleChange}>
             {options}
           </select>
         </div>
-        <input type='text' name='description' value={description} placeholder='Description' onChange={this.handleChange} />
+        <div>
+          <label>Description:</label>
+          <textarea type='text' name='description' value={description} placeholder='Description' onChange={this.handleChange}></textarea>
+        </div>
 
-        <button onClick={this.handleSaveClick}>Save</button>
+        <div>
+          <Link to='/'>back to list</Link>
+          <button onClick={this.handleSaveClick}>Save</button>
+        </div>
       </div>
     );
   }

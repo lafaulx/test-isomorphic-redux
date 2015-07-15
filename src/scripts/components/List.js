@@ -19,7 +19,11 @@ export default class List {
 
     return (
       <div className={bem()}>
-        {listViews}
+        <h1>Games list</h1>
+        <div className={bem('container')}>
+          {listViews}
+        </div>
+
         <Link to='/create'>Add game</Link>
       </div>
     );

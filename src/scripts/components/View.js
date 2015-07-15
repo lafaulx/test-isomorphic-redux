@@ -22,8 +22,10 @@ export default class View {
 
     return (
       <div className={bem()}>
-        <Link to='/'>Back</Link>
-        {game.get('title')}
+        <h1>{game.get('title')}</h1>
+        <em>{game.get('platform')}</em>
+        <p>{game.get('description')}</p>
+        <Link to='/'>back to list</Link>
       </div>
     );
   }

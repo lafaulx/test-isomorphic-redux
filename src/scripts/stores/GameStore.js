@@ -8,8 +8,6 @@ const actionsMap = {
   [ActionTypes.REQUEST_LIST_OK]: (state, action) => {
     const { body } = action.result;
 
-    console.log('list', body);
-
     return fromJS(body);
   },
 

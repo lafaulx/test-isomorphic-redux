@@ -1,0 +1,39 @@
+.Edit {
+  h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+
+  div {
+    display: flex;
+    width: 50%;
+    align-items: center;
+    margin-bottom: 10px;
+
+    label {
+      flex: 0 0 30%;
+    }
+
+    input, textarea, select, button {
+      font-size: 16px;
+    }
+
+    input, textarea {
+      border: solid 1px black;
+      width: 70%;
+    }
+
+    textarea {
+      resize: none;
+      height: 100px;
+    }
+
+    button {
+      margin-left: 20px
+    }
+
+    &:last-of-type {
+      margin-top: 50px;
+    }
+  }
+}
