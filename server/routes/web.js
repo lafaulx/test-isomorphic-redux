@@ -47,10 +47,6 @@ module.exports = function (config, development) {
   });
 
   web.get('*', function (req, res) {
-    if (development) {
-      res.set({ 'Access-Control-Allow-Origin': 'http://localhost:' + config.DEV_SERVER_PORT });
-    }
-
     logger.info(req.url);
 
     var context = {};

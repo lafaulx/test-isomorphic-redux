@@ -17,28 +17,13 @@ var games = [{
   description: 'Mortal Kombat X combines cinematic presentation with all new gameplay to deliver the most brutal Kombat experience ever, offering a new fully-connected experience that launches players into a persistent online contest where every fight matters in a global battle for supremacy. For the first time, Mortal Kombat X gives players the ability to choose from multiple variations of each character impacting both strategy and fighting style. Players step into an original story showcasing some of the game’s most prolific characters including Scorpion and Sub-Zero, while introducing new challengers that represent the forces of good and evil and tie the tale together.'
 }];
 
-module.exports = function (config, development) {
+module.exports = function () {
   var api = express.Router();
-
-  api.all('/*', function (req, res, next) {
-    res.set({
-      'Access-Control-Allow-Headers': 'X-Requested-With',
-      'Cache-Control': 'public, s-maxage=60',
-      'Content-Type': 'application/json',
-      'Expires': (new Date(Date.now() + 60 * 1000).toUTCString())
-    });
-
-    logger.info(req.url);
-
-    if (development) {
-      res.set({ 'Access-Control-Allow-Origin': 'http://' + config.DEV_SERVER_HOST });
-    }
-
-    next();
-  });
 
   api.get('/games', function(req, res) {
     var id = req.query.id;
+
+    logger.info(req.url);
 
     if (id) {
       id = parseInt(id, 10);
@@ -62,6 +47,18 @@ module.exports = function (config, development) {
     games.push(data);
 
     res.sendStatus(200);
+  });
+
+  api.put('/game', function(req, res) {
+    var data = req.body;
+
+    for (var i = 0; i < games.length; i++) {
+      if (data.id === games[i].id) {
+        games[i] = data;
+        res.sendStatus(200);
+        return;
+      }
+    }
   });
 
   return api;

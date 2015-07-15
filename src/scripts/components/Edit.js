@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
+import { Link } from 'react-router';
 
 import getClassName from '../utils/getClassName';
 import Platforms from '../constants/Platforms';
@@ -21,7 +22,7 @@ export default class Edit extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  shouldComponentUpdate: shouldPureComponentUpdate
+  shouldPureComponentUpdate: shouldPureComponentUpdate
 
   static get contextTypes() {
     return {
@@ -53,6 +54,7 @@ export default class Edit extends React.Component {
 
     return (
       <div className={bem()}>
+        <Link to='/'>Back</Link>
         <input type='text' name='title' value={title} placeholder='Title' onChange={this.handleChange} />
         <div>
           <label for='platform'>Platform</label>
@@ -76,10 +78,15 @@ export default class Edit extends React.Component {
   handleSaveClick() {
     let self = this;
 
-    this.props.createGame(this.state, () => {
-      console.log('CALLBACK!', self.context);
-      self.context.router.transitionTo('list');
-    });
+    if (this.props.game) {
+      this.props.updateGame(this.state, () => {
+        self.context.router.transitionTo('list');
+      });
+    } else {
+      this.props.createGame(this.state, () => {
+        self.context.router.transitionTo('list');
+      });
+    }
   }
 
   handleChange(e) {

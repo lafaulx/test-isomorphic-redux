@@ -10,7 +10,7 @@ import {
   CREATE_GAME_FAIL
 } from '../constants/ActionTypes';
 
-import { get, post } from '../utils/APIUtils';
+import { get, post, put } from '../utils/APIUtils';
 
 export function requestList() {
   return (dispatch) => {
@@ -60,8 +60,28 @@ export function createGame(game, callback) {
         return post(url).send(game).end(res => {
           if (res.ok) {
             resolve(res);
+            if (callback) {
+              callback();
+            }
+          } else {
+            reject(res);
+          }
+        });
+      })
+    });
+  };
+}
 
-            console.log(game);
+export function updateGame(game, callback) {
+  return (dispatch) => {
+    let url = '/api/game';
+
+    return dispatch({
+      types: [CREATE_GAME, CREATE_GAME_OK, CREATE_GAME_FAIL],
+      promise: new Promise((resolve, reject) => {
+        return put(url).send(game).end(res => {
+          if (res.ok) {
+            resolve(res);
             if (callback) {
               callback();
             }

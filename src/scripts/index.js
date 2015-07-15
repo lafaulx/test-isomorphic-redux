@@ -27,7 +27,7 @@ Router.run(routes, Router.HistoryLocation, (Handler, state) => {
     redux: redux
   };
 
-  const appEl = document.getElementById('app');
+  const appEl = window.document.getElementById('app');
 
   promise.then(() => {
     return React.render(

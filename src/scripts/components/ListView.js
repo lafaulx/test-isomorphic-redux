@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-import shouldPureComponentUpdate from 'react-pure-render/function';
 import { Link } from 'react-router';
+import shouldPureComponentUpdate from 'react-pure-render/function';
 
 import getClassName from '../utils/getClassName';
 
@@ -9,7 +9,7 @@ require('./ListView.less');
 const bem = getClassName('ListView');
 
 export default class ListView {
-  shouldComponentUpdate: shouldPureComponentUpdate
+  shouldPureComponentUpdate: shouldPureComponentUpdate
 
   static get propTypes() {
     return {
@@ -23,6 +23,7 @@ export default class ListView {
     return (
       <div className={bem()}>
         <Link to={`/view/${game.get('id')}`}>{game.get('title')}</Link>
+        <Link to={`/edit/${game.get('id')}`}>edit</Link>
       </div>
     );
   }

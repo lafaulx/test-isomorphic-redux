@@ -10,12 +10,5 @@ module.exports = {
   NODEJS_ADDR: NODEJS_ADDR,
   NODEJS_PORT: NODEJS_PORT,
 
-  API_ORIGIN: 'http://' + NODEJS_ADDR + ':' + NODEJS_PORT,
-
-  ASSETS_PATH: '',
-
-  REDIS_PORT: 6379,
-  REDIS_HOST: '178.62.173.180',
-  REDIS_PASS: 'upupdowndownleftrightleftrightbastart',
-  REDIS_KEY: 'meduza:'
+  API_ORIGIN: 'http://' + NODEJS_ADDR + ':' + NODEJS_PORT
 };

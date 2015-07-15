@@ -18,3 +18,7 @@ export function post(endpoint) {
   return superagent.post(prepareURL(endpoint));
 }
 
+export function put(endpoint) {
+  return superagent.put(prepareURL(endpoint));
+}
+
