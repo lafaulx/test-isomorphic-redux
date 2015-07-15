@@ -11,5 +11,9 @@ export default keyMirror({
 
   CREATE_GAME: null,
   CREATE_GAME_OK: null,
-  CREATE_GAME_FAIL: null
+  CREATE_GAME_FAIL: null,
+
+  EDIT_GAME: null,
+  EDIT_GAME_OK: null,
+  EDIT_GAME_FAIL: null
 });

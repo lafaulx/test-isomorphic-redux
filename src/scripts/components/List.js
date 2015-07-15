@@ -4,7 +4,6 @@ import shouldPureComponentUpdate from 'react-pure-render/function';
 import { Link } from 'react-router';
 
 import getClassName from '../utils/getClassName';
-
 import ListView from '../components/ListView';
 
 require('./List.less');

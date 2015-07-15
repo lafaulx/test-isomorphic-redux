@@ -7,7 +7,10 @@ import {
   REQUEST_GAME_FAIL,
   CREATE_GAME,
   CREATE_GAME_OK,
-  CREATE_GAME_FAIL
+  CREATE_GAME_FAIL,
+  EDIT_GAME,
+  EDIT_GAME_OK,
+  EDIT_GAME_FAIL
 } from '../constants/ActionTypes';
 
 import { get, post, put } from '../utils/APIUtils';
@@ -77,7 +80,7 @@ export function updateGame(game, callback) {
     let url = '/api/game';
 
     return dispatch({
-      types: [CREATE_GAME, CREATE_GAME_OK, CREATE_GAME_FAIL],
+      types: [EDIT_GAME, EDIT_GAME_OK, EDIT_GAME_FAIL],
       promise: new Promise((resolve, reject) => {
         return put(url).send(game).end(res => {
           if (res.ok) {

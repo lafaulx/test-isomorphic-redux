@@ -18,11 +18,11 @@ const actionsMap = {
       return game.get('id') === body.get('id');
     });
 
-    if (index === -1) {
-      return state.push(body);
-    } else {
+    if (index !== -1) {
       return state.update(index, () => body);
     }
+
+    return state.push(body);
   }
 };
 
