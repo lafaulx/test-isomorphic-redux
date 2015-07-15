@@ -62,6 +62,7 @@ export default class Edit extends React.Component {
         <div>
           <label>Platform:</label>
           <select name='platform' value={platform} onChange={this.handleChange}>
+            <option value=''></option>
             {options}
           </select>
         </div>
