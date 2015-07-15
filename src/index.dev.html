@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  <script src="http://localhost:{{ PORT }}/webpack-dev-server.js"></script>
+  <script>
+    'use strict';
+
+    // <!--
+
+    // -->
+
+    //<![CDATA[
+    window.appState = %%appState%%;
+    //]]>
+  </script>
+{% endblock %}
+
+{% block afterbody %}
+  <div id="app">%%body%%</div>
+  <script src="http://localhost:{{ PORT }}/assets/main.js"></script>
+{% endblock %}

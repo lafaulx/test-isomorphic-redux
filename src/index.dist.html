@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  <link rel="stylesheet" href="{{ getRevved('/assets/main.css') }}"></link>
+  <script>
+    'use strict';
+
+    // <!--
+
+    window.appState = %%appState%%;
+
+    // -->
+  </script>
+{% endblock %}
+
+{% block afterbody %}
+  <div id="app">%%body%%</div>
+  <script src="{{ getRevved('/assets/main.js') }}"></script>
+{% endblock %}
