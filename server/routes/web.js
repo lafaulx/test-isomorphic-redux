@@ -18,18 +18,6 @@ var ReduxUtils = require('redux/react');
 var stores = require('../../src/scripts/stores/index');
 var middleware = require('../../src/scripts/middlewares');
 
-var dispatcher = Redux.createDispatcher(
-  Redux.composeStores(stores),
-  function (getState) {
-    return [
-      middleware.promiseMiddleware(getState),
-      middleware.thunkMiddleware(getState),
-      middleware.loggerMiddleware
-    ];
-  }
-);
-var redux = Redux.createRedux(dispatcher);
-
 module.exports = function (config, development) {
   var DEST_ROOT = development ? config.DEV_DEST_ROOT : config.DIST_DEST_ROOT;
   var expressRouter = express.Router;
@@ -50,6 +38,18 @@ module.exports = function (config, development) {
     logger.info(req.url);
 
     var context = {};
+
+    var dispatcher = Redux.createDispatcher(
+      Redux.composeStores(stores),
+      function (getState) {
+        return [
+          middleware.promiseMiddleware(getState),
+          middleware.thunkMiddleware(getState),
+          middleware.loggerMiddleware
+        ];
+      }
+    );
+    var redux = Redux.createRedux(dispatcher);
 
     new Promise(function (resolve, reject) {
       var router = Router.create({
